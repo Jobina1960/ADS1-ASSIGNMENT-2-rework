@@ -30,6 +30,10 @@ def readfile(file_name):
     #taking transpose
     d_trans = d.transpose()
     
+    #Renaming the header for transposed dataframe
+    header = d_trans.iloc[0].values.tolist()
+    d_trans.columns = header
+    
     return d, d_trans
 
 #defining bar graph function
@@ -56,7 +60,7 @@ def bar_graph(d_name, title, fig_name, y_label):
     
     plt.figure(figsize = (17, 18))
     yrs = ["1990 [YR1990]", "1994 [YR1994]", "1998 [YR1998]", "2002 [YR2002]","2006 [YR2006]","2010 [YR2010]","2014 [YR2014]", "2018 [YR2018]"]
-    d_name.plot(x = "Country Name", y = yrs, kind ='bar')
+    d_name.plot(x = "Country Name", y = yrs, kind ='bar', edgecolor = 'black', width = 0.7)
     plt.title(title, fontsize=12)
     plt.xlabel('Countries', fontsize=10)
     plt.xticks(fontsize=10, rotation=90)
@@ -64,7 +68,7 @@ def bar_graph(d_name, title, fig_name, y_label):
     plt.yticks(fontsize=10)
     plt.xticks(rotation=45)
     plt.legend(frameon=False, fontsize=10)
-    #plt.savefig(fig_name, bbox_inches="tight", dpi=200)
+    plt.savefig(fig_name, bbox_inches="tight", dpi=200)
     plt.show()
 
 #defining line graph function
@@ -99,7 +103,7 @@ def line_graph(d_name, title, fig_name, y_label):
     plt.yticks(fontsize=10)
     plt.xticks(rotation=45)
     plt.legend(frameon=False, fontsize=10)
-    #plt.savefig(fig_name, bbox_inches="tight", dpi=200)
+    plt.savefig(fig_name, bbox_inches="tight", dpi=200)
     plt.show()
 
 
